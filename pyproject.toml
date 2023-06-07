@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "firecan"
+version = "0.1.0"
+description = ""
+authors = ["@tgj505"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.3"
+pillow = "^9.5.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
