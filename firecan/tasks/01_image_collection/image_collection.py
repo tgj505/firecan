@@ -1,18 +1,13 @@
 import requests
 import time
 import datetime
-
-from common import DATA_PATH
-from PIL import Image
-
 from io import BytesIO
 
+from PIL import Image
+
+from common import DATA_PATH
+
 cwfis_root = 'https://cwfis.cfs.nrcan.gc.ca'
-
-
-fb_types = ['hfi', 'tfc', 'sfc', 'fmc', 'cfb', 'ros', 'ft']
-fm3_types = ['tri']
-
 
 def date_iterator(date_str: str) -> str:
     curr = datetime.date(int(date_str[0:4]), int(date_str[4:6]), int(date_str[6:]))
@@ -34,7 +29,6 @@ def request_image_page(img_type: str, date_str: str):
 def store_image(response: requests.Response, img_type: str, date_str: str):
     with Image.open(BytesIO(response.content)) as i:
         i.save(fp=DATA_PATH/ f"{img_type}_{date_str}.png")
-    i.close()
     
 
 def scrape_images(n: int=5, img_type: str='ft', date_str: str="20230607"):
