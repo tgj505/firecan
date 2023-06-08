@@ -43,8 +43,8 @@ class TestImageRequest(unittest.TestCase):
 
 class TestImageScrape(unittest.TestCase):
     def test_image_scrape(self):
-        test_img_type, test_date_str = "ft", "20230606"
-        final = image_collection.scrape_images(n=3,
+        test_img_type, test_date_str = "ft", "20230607"
+        final = image_collection.scrape_images(n=10,
                                                img_type=test_img_type, 
                                                date_str=test_date_str)
         self.assertEqual(final, 0)
