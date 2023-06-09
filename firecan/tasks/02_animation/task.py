@@ -1,10 +1,10 @@
-from common import fb_types, fm3_types
+from common import maps_to_scrape
 import tqdm
 import animation
 
 
 def main():
-    for img_type in tqdm.tqdm(fb_types+fm3_types):
+    for img_type in tqdm.tqdm(maps_to_scrape):
         animation.make_gif(img_type=img_type)
 
 if __name__ == "__main__":

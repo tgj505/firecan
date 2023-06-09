@@ -1,6 +1,8 @@
+import datetime
+import random
 import requests
 import time
-import datetime
+
 from io import BytesIO
 
 from PIL import Image
@@ -42,7 +44,7 @@ def store_image(response: requests.Response, img_type: str, date_str: str):
         i.save(fp=PNG_PATH/ f"{img_type}_{date_str}.png")
     
 
-def scrape_images(n: int=5, img_type: str='ft', date_str: str="20230607"):
+def scrape_images(n: int, img_type: str, date_str: str):
     
     while n > 0:
         if check_image_existence(img_type=img_type, date_str=date_str) is True:
@@ -54,7 +56,7 @@ def scrape_images(n: int=5, img_type: str='ft', date_str: str="20230607"):
             except Exception as e:
                 print(f"can't scrape:{e}")
                 
-            time.sleep(1.5)
+            time.sleep(random.uniform(1,2))
         n-=1
         date_str = date_iterator(date_str=date_str)
         
