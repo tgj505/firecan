@@ -2,8 +2,9 @@
 name = "firecan"
 version = "0.1.0"
 description = ""
-authors = ["@tgj505"]
+authors = ["Tom <johnson.myfirstname.g@gmail.com>"]
 readme = "README.md"
+exclude = ["firecan/data"]
 
 [tool.poetry.dependencies]
 python = "^3.11.3"

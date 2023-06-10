@@ -1,3 +1,8 @@
 __pycache__
+
+# linting
+.ruff_cache
+
+# data
 *.pgn
 data/*
