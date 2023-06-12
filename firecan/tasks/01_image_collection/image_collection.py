@@ -20,7 +20,7 @@ def date_iterator(date_str: str) -> str:
 
 def check_image_existence(img_type: str, date_str: str) -> bool:
     try:
-        with open(PNG_PATH / f"{img_type}_{date_str}.png"):
+        with open(PNG_PATH / f"{img_type}_{date_str}.png") as f:
             return True
     except FileNotFoundError:
         return False
@@ -32,7 +32,7 @@ def request_image_page(img_type: str, date_str: str) -> requests.Response:
     else:
         url = f"{cwfis_root}/data/maps/fwi_fbp/{date_str[0:4]}/sf/{img_type}{date_str}.png"
     try:
-        response = requests.get(url=url)
+        response = requests.request(method="GET", url=url)
         response.raise_for_status()
         return response
     except requests.exceptions.RequestException as e:
