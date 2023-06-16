@@ -29,6 +29,8 @@ def check_image_existence(img_type: str, date_str: str) -> bool:
 def request_image_page(img_type: str, date_str: str) -> requests.Response:
     if img_type in fm3_types:
         url = f"{cwfis_root}/data/maps/fireM3/{date_str[0:4]}/{img_type}{date_str}.png"
+    elif img_type in ["zh","stab", "umix", "vi", "adi"]:
+        url = f"{cwfis_root}/data/maps/fwi_fbp/{date_str[0:4]}/{img_type}{date_str}.png"
     else:
         url = f"{cwfis_root}/data/maps/fwi_fbp/{date_str[0:4]}/sf/{img_type}{date_str}.png"
     try:
@@ -55,7 +57,7 @@ def scrape_images(n: int, img_type: str, date_str: str):
                 response = request_image_page(img_type=img_type, date_str=date_str)
                 store_image(response=response, img_type=img_type, date_str=date_str)
             except Exception as e:
-                print(f"can't scrape:{e}")
+                print(f"Can't scrape {img_type} for {date_str}:{e}")
 
             time.sleep(random.uniform(1, 2))
         n -= 1
